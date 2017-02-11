@@ -280,7 +280,7 @@ class WebRequest(object):
     def _handle_exception(self, exception):
         """Called within an except block to allow converting exceptions
            to abitrary responses. Anything returned (except None) will
-           be used as response.""" 
+           be used as response."""
         self._failed = exception # prevent tx commit
         if not isinstance(exception, NO_POSTMORTEM) \
                 and not isinstance(exception, werkzeug.exceptions.HTTPException):
@@ -479,7 +479,7 @@ class JsonRequest(WebRequest):
         self.jsonp = jsonp
         request = None
         request_id = args.get('id')
-        
+
         if jsonp and self.httprequest.method == 'POST':
             # jsonp 2 steps step1 POST: save call
             def handler():
@@ -627,7 +627,7 @@ def to_jsonable(o):
     return ustr(o)
 
 def jsonrequest(f):
-    """ 
+    """
         .. deprecated:: 8.0
             Use the :func:`~openerp.http.route` decorator instead.
     """
@@ -739,7 +739,7 @@ class HttpRequest(WebRequest):
         return werkzeug.exceptions.NotFound(description)
 
 def httprequest(f):
-    """ 
+    """
         .. deprecated:: 8.0
 
         Use the :func:`~openerp.http.route` decorator instead.
@@ -905,7 +905,7 @@ class Model(object):
             if not request.db or not request.uid or self.session.db != request.db \
                 or self.session.uid != request.uid:
                 raise Exception("Trying to use Model with badly configured database or user.")
-                
+
             if method.startswith('_'):
                 raise Exception("Access denied")
             mod = request.registry[self.model]
@@ -1466,7 +1466,7 @@ def db_filter(dbs, httprequest=None):
     h = httprequest.environ.get('HTTP_HOST', '').split(':')[0]
     d, _, r = h.partition('.')
     if d == "www" and r:
-        d = r.partition('.')[0]
+        d = h.partition('.')[0]
     r = openerp.tools.config['dbfilter'].replace('%h', h).replace('%d', d)
     dbs = [i for i in dbs if re.match(r, i)]
     return dbs
