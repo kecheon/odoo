@@ -1,7 +1,7 @@
 [options]
 dev = all
 secure_uninstall = dmdcjs0
-addons_path = /home/cheon/odoo_master/addons,/home/cheon/odoo_master/custom
+addons_path = /home/cheon/odoo/addons,/home/cheon/odoo/custom
 admin_passwd = dmdcjs0
 auto_reload = False
 csv_internal_sep = ,
@@ -13,8 +13,7 @@ db_password = False
 db_port = False
 db_template = template1
 db_user = cheon
-dbfilter = ^%d$
-#dbfilter = blind
+#dbfilter = ^%d$
 debug_mode = False
 demo = {}
 email_from = False
@@ -60,7 +59,7 @@ without_demo = False
 workers = 0
 xmlrpc = True
 xmlrpc_interface = 
-xmlrpc_port = 8069
+xmlrpc_port = 8070
 #xmlrpcs = True
 #xmlrpcs_interface = 
 #xmlrpcs_port = 8071

@@ -242,8 +242,8 @@ class WebsiteForum(http.Controller):
         cr, uid, context = request.cr, request.uid, request.context
 
         # Hide posts from abusers (negative karma), except for moderators
-        if not question.can_view:
-            raise werkzeug.exceptions.NotFound()
+        # if not question.can_view:
+        #     raise werkzeug.exceptions.NotFound()
 
         # increment view counter
         request.registry['forum.post'].set_viewed(cr, SUPERUSER_ID, [question.id], context=context)
